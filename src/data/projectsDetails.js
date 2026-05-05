@@ -38,9 +38,9 @@ export const projectsDetails = [
   githubUrl: "#",
   liveUrl: "#",
   screenshots: [
-    "/public/assets/cashflow/login.png", 
-    "/public/assets/cashflow/dashboard.png",
-    "/public/assets/cashflow/profile.png"
+    "/assets/cashflow/login.png", 
+    "/assets/cashflow/dashboard.png",
+    "/assets/cashflow/profile.png"
   ],
   overview: "A modern financial dashboard built to provide clear, real-time insights into budgets, expenses, and overall cash flow. The application replaces fragmented spreadsheet workflows with a responsive, intuitive interface focused on usability and data clarity.",
   challenges: [
