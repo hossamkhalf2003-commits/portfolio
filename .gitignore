@@ -13,9 +13,7 @@ build
 .env
 dist-ssr
 *.local
-public/
-assets/
-*.png
+
 
 # Editor directories and files
 .vscode/*
