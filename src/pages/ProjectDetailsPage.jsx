@@ -1,4 +1,7 @@
+import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom"; // IMPORT PORTAL
 import { useParams, Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import { projectsDetails } from "../data/projectsDetails";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
@@ -9,9 +12,45 @@ import { useCursor } from "../context/CursorContext";
 
 export default function ProjectDetailsPage() {
   const { id } = useParams();
-  const { setHovering } = useCursor(); // Bring in the cursor for the image gallery
+  const { setHovering } = useCursor();
   
+  const [selectedImage, setSelectedImage] = useState(null);
+  const scrollContainerRef = useRef(null); // Ref for the carousel
+
   const project = projectsDetails.find(p => p.id === parseInt(id));
+
+  // --- Scroll Function for Carousel Buttons ---
+  const scroll = (direction) => {
+    if (scrollContainerRef.current) {
+      const { current } = scrollContainerRef;
+      // Scroll by the width of the container for a full "page" swipe
+      const scrollAmount = direction === "left" ? -current.offsetWidth : current.offsetWidth;
+      current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
+
+  // Close lightbox on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") setSelectedImage(null);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  // Prevent background scrolling when lightbox is open
+  useEffect(() => {
+    if (selectedImage) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    
+    // Cleanup incase component unmounts while modal is open
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [selectedImage]);
 
   if (!project) {
     return (
@@ -40,7 +79,6 @@ export default function ProjectDetailsPage() {
       <main className="flex-grow w-full max-w-6xl mx-auto px-6 py-24 md:py-32">
         <div className="space-y-12">
           
-          {/* Header Section */}
           <FadeIn direction="down" delay={0.1}>
             <Link to="/projects" className="text-sm font-medium text-accent-primary hover:text-accent-secondary transition-colors inline-flex items-center gap-2 mb-8 group">
               <svg className="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
@@ -57,10 +95,8 @@ export default function ProjectDetailsPage() {
             </div>
           </FadeIn>
 
-          {/* Bento Grid Section */}
           <FadeIn direction="up" delay={0.2}>
             <BentoGrid className="grid-cols-1 md:grid-cols-3 gap-6">
-              
               <BentoCard title="Project Overview" icon={icons.overview} className="md:col-span-2">
                 <p className="text-content-secondary text-base leading-relaxed mt-2">{project.overview}</p>
                 <div className="flex gap-4 mt-8">
@@ -105,48 +141,121 @@ export default function ProjectDetailsPage() {
                   ))}
                 </ul>
               </BentoCard>
-
             </BentoGrid>
           </FadeIn>
 
-          {/* NEW: Screenshot Gallery Section */}
+          {/* Screenshot Gallery with Navigation Buttons */}
           {project.screenshots && project.screenshots.length > 0 && (
             <FadeIn direction="up" delay={0.3}>
-              <div className="mt-16 pt-8 border-t border-border-ui/50">
+              <div className="mt-16 pt-8 border-t border-border-ui/50 overflow-hidden">
                 <h3 className="text-2xl font-bold text-content-primary mb-8 tracking-tight">System Interface Gallery</h3>
                 
-                {/* 
-                  Grid scales perfectly: 
-                  - 1 column on mobile
-                  - 2 columns on tablets/small laptops
-                  - If there are exactly 3 images, you might want md:grid-cols-3, but 2 usually looks better for large app screenshots.
-                */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {project.screenshots.map((imgSrc, index) => (
-                    <div 
-                      key={index} 
-                      onMouseEnter={() => setHovering(true)}
-                      onMouseLeave={() => setHovering(false)}
-                      className="group relative overflow-hidden rounded-2xl border border-border-ui bg-surface aspect-video"
-                    >
-                      {/* Subtle dark overlay that fades out on hover to draw focus */}
-                      <div className="absolute inset-0 bg-main/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
-                      
-                      <img 
-                        src={imgSrc} 
-                        alt={`${project.title} Interface ${index + 1}`} 
-                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                      />
-                    </div>
-                  ))}
-                </div>
+                {/* Carousel Wrapper for absolute positioned buttons */}
+{/* Carousel Wrapper for absolute positioned buttons */}
+<div className="relative group/carousel flex items-center mt-6">
+  
+  {/* Left Scroll Button */}
+  <button 
+    onClick={() => scroll("left")}
+    onMouseEnter={() => setHovering(true)}
+    onMouseLeave={() => setHovering(false)}
+    // UPGRADED: Always visible, solid primary background, inverted icon color, premium shadow
+    className="absolute -left-4 z-20 p-3 rounded-full bg-accent-primary text-[var(--bg-main)] shadow-[0_4px_20px_rgba(0,0,0,0.2)] transition-all duration-300 hover:scale-110 hover:brightness-110 hidden md:flex items-center justify-center"
+    aria-label="Scroll left"
+  >
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+
+  {/* Scroll Container */}
+  <div 
+    ref={scrollContainerRef}
+    className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory no-scrollbar items-center px-4 w-full scroll-smooth"
+  >
+    {project.screenshots.map((imgSrc, index) => (
+      <div 
+        key={index} 
+        onClick={() => setSelectedImage(imgSrc)}
+        onMouseEnter={() => setHovering(true)}
+        onMouseLeave={() => setHovering(false)}
+        className="snap-center shrink-0 relative rounded-2xl border border-border-ui bg-surface cursor-zoom-in group overflow-hidden shadow-sm"
+      >
+        <div className="absolute inset-0 bg-main/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
+        <img 
+          src={imgSrc} 
+          alt={`${project.title} Interface ${index + 1}`} 
+          className="h-[40vh] md:h-[50vh] w-auto object-contain transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+        />
+      </div>
+    ))}
+  </div>
+
+  {/* Right Scroll Button */}
+  <button 
+    onClick={() => scroll("right")}
+    onMouseEnter={() => setHovering(true)}
+    onMouseLeave={() => setHovering(false)}
+    // UPGRADED: Always visible, solid primary background, inverted icon color, premium shadow
+    className="absolute -right-4 z-20 p-3 rounded-full bg-accent-primary text-[var(--bg-main)] shadow-[0_4px_20px_rgba(0,0,0,0.2)] transition-all duration-300 hover:scale-110 hover:brightness-110 hidden md:flex items-center justify-center"
+    aria-label="Scroll right"
+  >
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+
+</div>
               </div>
             </FadeIn>
           )}
-
         </div>
       </main>
-      
+
+      {/* 
+        NEW: React Portal 
+        This teleport the modal outside the PageTransition component 
+        so it isn't affected by CSS transforms, perfectly fixing the scrolling bug!
+      */}
+      {createPortal(
+        <AnimatePresence>
+          {selectedImage && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setSelectedImage(null)}
+              // z-[9999] ensures it stays above absolutely everything
+              className="fixed inset-0 z-[9999] flex items-center justify-center bg-main/90 backdrop-blur-md p-4 sm:p-10 cursor-zoom-out"
+            >
+              {/* Close Button */}
+              <button 
+                className="absolute top-6 right-6 p-3 rounded-full bg-surface/50 hover:bg-surface border border-border-ui text-content-primary hover:text-accent-primary transition-all duration-300 z-50 shadow-lg"
+                onClick={() => setSelectedImage(null)}
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              {/* Expanded Image */}
+              <motion.img
+                initial={{ scale: 0.9, y: 20 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.9, y: 20 }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                src={selectedImage}
+                alt="Expanded Interface"
+                onClick={(e) => e.stopPropagation()}
+                className="max-w-full max-h-[90vh] rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.3)] object-contain cursor-default"
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
+
       <Footer />
     </div>
   );

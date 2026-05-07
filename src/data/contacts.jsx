@@ -18,7 +18,7 @@ export const contacts = [
     id: 2,
     platform: "LinkedIn",
     value: "Hossam Bahaa",
-    url: "https://linkedin.com/in/hossam-bahaa", // Update this
+    url: "https://linkedin.com/in/hossam-bahaa",
     desc: "Connect with me professionally to see my career history.",
     icon: (
       <path
@@ -32,8 +32,8 @@ export const contacts = [
   {
     id: 3,
     platform: "WhatsApp",
-    value: "+20 102 411 7621", // Update this
-    url: "https://wa.me/201024117621", // Update this
+    value: "+20 102 411 7621",
+    url: "https://wa.me/201024117621",
     desc: "For quick chats and immediate project updates.",
     icon: (
       <path
@@ -47,8 +47,8 @@ export const contacts = [
   {
     id: 4,
     platform: "GitHub",
-    value: "Hossam Khalafallah", // Update this
-    url: "https://github.com/hossamkhalf2003-commits", // Update this
+    value: "Hossam Khalafallah",
+    url: "https://github.com/hossamkhalf2003-commits",
     desc: "Explore my source code, architecture, and open-source work.",
     icon: (
       <path
