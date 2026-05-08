@@ -46,8 +46,8 @@ export const projectsDetails = [
     githubUrl: "#",
     liveUrl: "#",
     screenshots: [
-      "/public/assets/payroll/login.png",
-      "/public/assets/payroll/dashboard.jpg",
+      "/assets/payroll/login.png",
+      "/assets/payroll/dashboard.jpg",
     ],
     overview:
       "A scalable and user-centric ERP and payroll web application built for Ergo to streamline workforce management across multiple factory locations. The platform focuses on delivering a seamless user experience for handling attendance, shift tracking, and payroll visualization, reducing manual workload and improving operational clarity.",
