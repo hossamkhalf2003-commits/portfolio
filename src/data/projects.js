@@ -27,5 +27,13 @@ export const projects = [
     stack: ["Laravel", "Inertia.js", "MySQL"],
     desc: "Budget, expenses, dashboards, reporting system.",
   },
+    {
+    id: 4,
+    title: "Medicore medical app",
+    banner: "assets/medicore/home.jpeg",
+    stack: ["flutter", "dart", "figma"],
+    desc: "medical",
+  }
+
 
 ];

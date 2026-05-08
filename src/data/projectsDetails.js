@@ -30,11 +30,11 @@ export const projectsDetails = [
       "Algorithmic File Generation: Built custom export logic using the pdf and excel libraries to generate localized, professional reports on-demand."
     ],
     keyFeatures: [
-      "Financial Dashboard: Features real-time calculation of remaining budgets against total expenses, visualized through custom progress indicators and dynamic metric cards.",
-      "Receipt Archiving: Includes an integrated Bills Manager where users can securely attach images or PDFs to specific expenses.",
-      "Multi-Format Export: Supports algorithmic generation of PDF reports, Excel spreadsheets, and ZIP archives containing all digitized receipts.",
-      "Data Portability: Provides full database backup and restore functionality, ensuring users maintain total ownership and mobility of their financial data.",
-      "Dynamic Category Management: Allows users to create, edit, or delete custom expense categories to fit their specific lifestyle or business needs."
+      "Financial Dashboard.",
+      "Receipt Archiving.",
+      "Multi-Format Export.",
+      "Data Portability.",
+      "Dynamic Category Management."
     ],
   },
   {
@@ -97,6 +97,38 @@ export const projectsDetails = [
       "Dynamic expense tracking and categorization UI",
       "Role-based interface rendering for different user types",
       "Responsive and accessible design across devices",
+    ],
+  },
+    {
+    id: 4,
+    title: "Medicore medical app",
+    client: "freelance project",
+    role: "mobile app developer",
+    timeline: "4-2026 to 5-2026",
+    githubUrl: "#",
+    liveUrl: "#",
+    screenshots: [
+      "/assets/medicore/login.jpeg",
+      "/assets/medicore/home.jpeg",
+      "/assets/medicore/profile.jpeg",
+      "/assets/medicore/community.jpeg",
+      "/assets/medicore/emergency.jpeg",
+    ],
+    overview:
+      "medicore is a comprehensive, modern healthcare mobile application designed to bridge the gap between patients and medical services. As the primary UI/UX Developer for this phase, my objective was to translate high-fidelity Figma designs into a pixel-perfect, highly responsive, and performant Flutter frontend. The project required setting up a scalable architecture, establishing a robust design system, and implementing complex, scrollable interfaces without compromising on fluid 60-FPS animations.",
+    challenges: [
+      "Translating a complex Figma design into code often leads to bloated, hard-to-maintain widget trees and performance bottlenecks, especially when dealing with nested scroll views and rich graphic elements. Furthermore, the design required absolute precision in padding, typography, and color gradients. The primary challenge was to engineer a frontend architecture that was not only visually identical to the design but also structured in a way that would allow backend engineers to seamlessly inject API logic later, without having to refactor the UI layer.",
+    ],
+    solutions: [
+      "Centralized Design System: Rather than hardcoding styles, I built a highly configurable AppTheme class that dictates global InputDecoration, CardTheme, and GoogleFonts text styles. This shrank the codebase significantly by removing repetitive styling parameters.",
+      "Optimized Rendering: To maximize performance, I relied heavily on native Flutter layouts (like Stack, Positioned, and custom BoxDecorations) instead of heavy third-party UI packages.",
+      "Ready-to-Scale Routing: I implemented GoRouter coupled with Riverpod for dependency injection, establishing a robust, declarative routing system that handles deep linking and complex nested navigation out of the box. The result is a catchy, modern, and ultra-smooth interface that stands ready for full backend integration.",
+    ],
+    keyFeatures: [
+      "Persistent Bottom Navigation.",
+      "Responsive Typography & Sizing.",
+      "Advanced Scroll Physics.",
+      "Engaging Micro-interactions.",
     ],
   },
 
