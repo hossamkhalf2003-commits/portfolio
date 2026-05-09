@@ -33,7 +33,14 @@ export const projects = [
     banner: "assets/medicore/home.jpeg",
     stack: ["flutter", "dart", "figma"],
     desc: "medical",
-  }
+  },
+      {
+    id: 5,
+    title: "ShoppyGo ecommerce",
+    banner: "assets/shoppygo/home.jpeg",
+    stack: ["flutter", "dart"],
+    desc: "ecommerce",
+  },
 
 
 ];

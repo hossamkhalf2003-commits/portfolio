@@ -131,5 +131,51 @@ export const projectsDetails = [
       "Engaging Micro-interactions.",
     ],
   },
+      {
+    id: 5,
+    title: "ShoppyGo ecommerce",
+    client: "freelance project",
+    role: "mobile app developer",
+    timeline: "3-2026 to 4-2026",
+    githubUrl: "#",
+    liveUrl: "#",
+    screenshots: [
+      "/assets/shoppygo/login.jpeg",
+      "/assets/shoppygo/register.jpeg",
+      "/assets/shoppygo/home.jpeg",
+      "/assets/shoppygo/home2.jpeg",
+      "/assets/shoppygo/account.jpeg",
+      "/assets/shoppygo/empty_cart.jpeg",
+      "/assets/shoppygo/cart.jpeg",
+      "/assets/shoppygo/account.jpeg",
+      "/assets/shoppygo/checkout.jpeg",
+      "/assets/shoppygo/checkout_success.jpeg",
+      "/assets/shoppygo/saved_orders.jpeg",
+      "/assets/shoppygo/mydetails.jpeg",
+      "/assets/shoppygo/address.jpeg",
+
+
+
+    ],
+    overview:
+      "Developed a full-stack, high-performance E-Commerce mobile application using Flutter. The application provides a seamless shopping experience from product discovery to secure checkout. Built with a strong focus on clean architecture, the app utilizes the Platzi Fake Store API for dynamic data, ensuring a robust, responsive, and visually polished user interface tailored for modern mobile platforms.",
+    challenges: [
+      "State Synchronization: Ensuring that when a user adds an item to the cart or updates their default shipping address, the UI instantly reflects these changes globally without unnecessary widget rebuilds.",
+      "Authentication Security vs. Friction: Balancing a highly secure login flow with user convenience, specifically allowing returning users to bypass typing complex passwords without exposing sensitive data.",
+      "Graceful Error Handling: Managing network unreliability and API failures natively without breaking the user experience or leaving them trapped on infinite loading screens."
+    ],
+    solutions: [
+    "Immutable State with Riverpod: By combining StateNotifierProvider and immutable data models (copyWith methods), the application achieves highly optimized, localized UI rebuilds. A dedicated cartTotalProvider automatically folds cart items to calculate totals entirely decoupled from the UI layer.",
+    "Hardware-Backed Biometrics: Implemented a secure authentication flow using flutter_secure_storage. Upon initial manual login, credentials are encrypted and stored in the device's secure enclave. Subsequent logins trigger local_auth biometric scanners, silently passing the decrypted credentials to the API upon successful physical verification.",
+    "Robust Networking Core: Centralized all HTTP requests through a custom DioHelper singleton. Configured BaseOptions for consistent timeouts and endpoints, and integrated PrettyDioLogger for rapid debugging. Network failures are caught at the repository level and passed safely to the Riverpod controllers to trigger user-friendly SnackBar error alerts."
+    ],
+    keyFeatures: [
+      "Secure Authentication with Biometrics.",
+      "Reactive State Management.",
+      "Dynamic Routing.",
+      "Responsive UI/UX.",
+      "Real-time Cart Calculation."
+    ],
+  },
 
 ];
