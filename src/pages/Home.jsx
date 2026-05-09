@@ -5,7 +5,6 @@ import ProjectCard from "../components/ui/ProjectCard";
 import FadeIn from "../components/ui/FadeIn";
 import Button from "../components/ui/Button"; // Import your premium Button
 import { projects } from "../data/projects";
-import { skills } from "../data/skills";
 
 export default function Home() {
   return (
@@ -55,34 +54,7 @@ export default function Home() {
           </FadeIn>
         </section>
 
-        {/* Skills Section */}
-        <section className="py-16 mb-12">
-          <FadeIn direction="left" delay={0.1}>
-            <SectionTitle>Technical Arsenal</SectionTitle>
-          </FadeIn>
-          
-          {/* Upgraded layout: A sleek Technical Matrix Grid */}
-          <FadeIn direction="up" delay={0.3}>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-8">
-              {skills.map((skill) => (
-                <div 
-                  key={skill} 
-                  className="group relative px-4 py-4 rounded-2xl bg-surface border border-border-ui overflow-hidden flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:border-accent-primary/40 hover:shadow-[0_0_20px_rgba(0,240,255,0.05)] cursor-default"
-                >
-                  {/* Ambient Background Bloom */}
-                  <div className="absolute inset-0 bg-gradient-glow opacity-0 group-hover:opacity-[0.05] transition-opacity duration-500 pointer-events-none" />
-                  
-                  {/* Subtle Top Border Neon Glow */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-accent-primary/0 group-hover:via-accent-primary/60 to-transparent transition-all duration-500" />
-                  
-                  <span className="relative z-10 text-sm md:text-base font-semibold text-content-secondary transition-colors duration-300 group-hover:text-accent-primary tracking-wide">
-                    {skill}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </FadeIn>
-        </section>
+
         {/* Final Call to Action */}
         <section className="py-24 mb-12 relative">
           <FadeIn direction="up" delay={0.2}>

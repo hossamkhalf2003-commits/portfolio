@@ -4,8 +4,8 @@ import { useCursor } from "../../context/CursorContext";
 export default function Button({ children, to, onClick, className = "" }) {
   const { setHovering } = useCursor();
 
-  // Premium B2B styling: Cyan tinted background, glowing border, text inversion on hover
-  const baseClasses = `group relative inline-flex items-center justify-center gap-3 px-6 py-2.5 text-sm font-semibold tracking-wider rounded-full transition-all duration-300 overflow-hidden border border-accent-primary/40 text-accent-primary bg-accent-primary/5 hover:bg-accent-primary hover:text-[var(--bg-main)] hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] ${className}`;
+  // Premium, clean styling: Subtle background tint increase, brightened border, and a soft ambient glow on hover.
+  const baseClasses = `group relative inline-flex items-center justify-center gap-3 px-6 py-2.5 text-sm font-semibold tracking-wider rounded-full transition-all duration-300 overflow-hidden border border-accent-primary/40 text-accent-primary bg-accent-primary/5 hover:bg-accent-primary/15 hover:border-accent-primary hover:shadow-[0_0_15px_rgba(0,240,255,0.15)] ${className}`;
 
   const handleMouseEnter = () => setHovering(true);
   const handleMouseLeave = () => setHovering(false);
@@ -25,7 +25,6 @@ export default function Button({ children, to, onClick, className = "" }) {
     </>
   );
 
-  // If a 'to' prop is provided, render a React Router Link
   if (to) {
     return (
       <Link 
@@ -39,7 +38,6 @@ export default function Button({ children, to, onClick, className = "" }) {
     );
   }
 
-  // Otherwise, render a standard HTML button
   return (
     <button 
       onClick={onClick} 
