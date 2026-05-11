@@ -40,6 +40,12 @@ export const projects = [
     banner: "assets/shoppygo/home.jpeg",
     stack: ["flutter", "dart"],
     desc: "ecommerce",
+  },      {
+    id: 6,
+    title: "Habit Tracker",
+    banner: "assets/habit-tracker/home.jpeg",
+    stack: ["flutter", "dart"],
+    desc: "habit tracking app",
   },
 
 

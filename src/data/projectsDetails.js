@@ -1,10 +1,10 @@
 export const projectsDetails = [
-    {
+  {
     id: 1,
     title: "Masroufaty Expense Tracker",
     client: "Freelance Project",
     role: "Mobile App Developer",
-    timeline: "8-2025 to 9-2025",
+    timeline: "august 2025 to september 2025",
     githubUrl: "#",
     liveUrl: "#",
     screenshots: [
@@ -21,20 +21,20 @@ export const projectsDetails = [
       "Data Persistence & Reliability: Ensuring complex financial data remains consistent and accessible without relying on a constant internet connection.",
       "Localization Complexity: Handling Right-to-Left (RTL) layouts and localized currency calculations within a modern, catchy visual framework.",
       "Fragmented Documentation: Managing physical paper receipts which are easily lost or damaged, leading to incomplete financial records.",
-      "Portable Reporting: Providing users with professional, shareable financial summaries in standard formats (PDF/Excel) directly from a mobile environment."
+      "Portable Reporting: Providing users with professional, shareable financial summaries in standard formats (PDF/Excel) directly from a mobile environment.",
     ],
     solutions: [
       "Relational Local Storage: Implemented a robust SQLite database using sqflite to manage relational integrity between expenses, income sources, and dynamic categories.",
       "Service Layer Abstraction: Abstracted all business logic and database queries into a dedicated ExpenseService to keep the UI code clean and strictly focused on rendering.",
       "Custom Theming System: Developed a cohesive design language using a centralized color dictionary to ensure a modern aesthetic while supporting future Light/Dark mode transitions.",
-      "Algorithmic File Generation: Built custom export logic using the pdf and excel libraries to generate localized, professional reports on-demand."
+      "Algorithmic File Generation: Built custom export logic using the pdf and excel libraries to generate localized, professional reports on-demand.",
     ],
     keyFeatures: [
       "Financial Dashboard.",
       "Receipt Archiving.",
       "Multi-Format Export.",
       "Data Portability.",
-      "Dynamic Category Management."
+      "Dynamic Category Management.",
     ],
   },
   {
@@ -45,10 +45,7 @@ export const projectsDetails = [
     timeline: "2025 - Present",
     githubUrl: "#",
     liveUrl: "#",
-    screenshots: [
-      "/assets/payroll/login.png",
-      "/assets/payroll/dashboard.jpg",
-    ],
+    screenshots: ["/assets/payroll/login.png", "/assets/payroll/dashboard.jpg"],
     overview:
       "A scalable and user-centric ERP and payroll web application built for Ergo to streamline workforce management across multiple factory locations. The platform focuses on delivering a seamless user experience for handling attendance, shift tracking, and payroll visualization, reducing manual workload and improving operational clarity.",
     challenges: [
@@ -73,7 +70,7 @@ export const projectsDetails = [
     title: "Cashflow Management System",
     client: "Internal Business Tool",
     role: "Frontend Software Engineer",
-    timeline: "8-2025 to 11-2025",
+    timeline: "august 2025 to november 2025",
     githubUrl: "#",
     liveUrl: "#",
     screenshots: [
@@ -99,12 +96,12 @@ export const projectsDetails = [
       "Responsive and accessible design across devices",
     ],
   },
-    {
+  {
     id: 4,
     title: "Medicore medical app",
     client: "freelance project",
     role: "mobile app developer",
-    timeline: "4-2026 to 5-2026",
+    timeline: "april 2026 to may 2026",
     githubUrl: "#",
     liveUrl: "#",
     screenshots: [
@@ -131,12 +128,12 @@ export const projectsDetails = [
       "Engaging Micro-interactions.",
     ],
   },
-      {
+  {
     id: 5,
     title: "ShoppyGo ecommerce",
     client: "freelance project",
     role: "mobile app developer",
-    timeline: "3-2026 to 4-2026",
+    timeline: "march 2026 to april 2026",
     githubUrl: "#",
     liveUrl: "#",
     screenshots: [
@@ -153,29 +150,61 @@ export const projectsDetails = [
       "/assets/shoppygo/saved_orders.jpeg",
       "/assets/shoppygo/mydetails.jpeg",
       "/assets/shoppygo/address.jpeg",
-
-
-
     ],
     overview:
       "Developed a full-stack, high-performance E-Commerce mobile application using Flutter. The application provides a seamless shopping experience from product discovery to secure checkout. Built with a strong focus on clean architecture, the app utilizes the Platzi Fake Store API for dynamic data, ensuring a robust, responsive, and visually polished user interface tailored for modern mobile platforms.",
     challenges: [
       "State Synchronization: Ensuring that when a user adds an item to the cart or updates their default shipping address, the UI instantly reflects these changes globally without unnecessary widget rebuilds.",
       "Authentication Security vs. Friction: Balancing a highly secure login flow with user convenience, specifically allowing returning users to bypass typing complex passwords without exposing sensitive data.",
-      "Graceful Error Handling: Managing network unreliability and API failures natively without breaking the user experience or leaving them trapped on infinite loading screens."
+      "Graceful Error Handling: Managing network unreliability and API failures natively without breaking the user experience or leaving them trapped on infinite loading screens.",
     ],
     solutions: [
-    "Immutable State with Riverpod: By combining StateNotifierProvider and immutable data models (copyWith methods), the application achieves highly optimized, localized UI rebuilds. A dedicated cartTotalProvider automatically folds cart items to calculate totals entirely decoupled from the UI layer.",
-    "Hardware-Backed Biometrics: Implemented a secure authentication flow using flutter_secure_storage. Upon initial manual login, credentials are encrypted and stored in the device's secure enclave. Subsequent logins trigger local_auth biometric scanners, silently passing the decrypted credentials to the API upon successful physical verification.",
-    "Robust Networking Core: Centralized all HTTP requests through a custom DioHelper singleton. Configured BaseOptions for consistent timeouts and endpoints, and integrated PrettyDioLogger for rapid debugging. Network failures are caught at the repository level and passed safely to the Riverpod controllers to trigger user-friendly SnackBar error alerts."
+      "Immutable State with Riverpod: By combining StateNotifierProvider and immutable data models (copyWith methods), the application achieves highly optimized, localized UI rebuilds. A dedicated cartTotalProvider automatically folds cart items to calculate totals entirely decoupled from the UI layer.",
+      "Hardware-Backed Biometrics: Implemented a secure authentication flow using flutter_secure_storage. Upon initial manual login, credentials are encrypted and stored in the device's secure enclave. Subsequent logins trigger local_auth biometric scanners, silently passing the decrypted credentials to the API upon successful physical verification.",
+      "Robust Networking Core: Centralized all HTTP requests through a custom DioHelper singleton. Configured BaseOptions for consistent timeouts and endpoints, and integrated PrettyDioLogger for rapid debugging. Network failures are caught at the repository level and passed safely to the Riverpod controllers to trigger user-friendly SnackBar error alerts.",
     ],
     keyFeatures: [
       "Secure Authentication with Biometrics.",
       "Reactive State Management.",
       "Dynamic Routing.",
       "Responsive UI/UX.",
-      "Real-time Cart Calculation."
+      "Real-time Cart Calculation.",
     ],
   },
-
+  {
+  "id": 6,
+  "title": "Habit Tracker",
+  "client": "Personal Project",
+  "role": "Mobile App Developer & UI/UX Designer",
+  "timeline": "june 2025",
+  "githubUrl": "#",
+  "liveUrl": "#",
+  "screenshots": [
+    "/assets/habit-tracker/home.jpeg",
+    "/assets/habit-tracker/calendar.jpeg",
+    "/assets/habit-tracker/add-habit.jpeg",
+    "/assets/habit-tracker/dark-mode.jpeg"
+  ],
+  "overview": "A minimalist, visually engaging habit tracking application designed to help users build and maintain daily routines. Built with a strict focus on a catchy, modern UI/UX and maximizing on-device performance, the app features offline-first data persistence, seamless Light/Dark mode transitions, localized push notifications, and interactive statistical charts to visualize progress.",
+  "challenges": [
+    "Rendering Performance: Rendering custom calendar views with multiple overlapping visual indicators for habit schedules without causing UI stutter or dropping frames.",
+    "Notification Reliability: Scheduling and managing timezone-aware daily reminders natively on both iOS and Android without relying on external backend triggers.",
+    "Responsive Design Architecture: Ensuring a consistent, pixel-perfect, and modern UI layout across vastly different mobile screen dimensions and pixel densities.",
+    "State Synchronization: Maintaining immediate UI updates across disparate views (Dashboard, Calendar, Stats) while managing local data mutations and complex streak calculations."
+  ],
+  "solutions": [
+    "Optimized Rendering Algorithms: Engineered a pre-calculation engine mapping habit visual indicators for O(1) lookups (`_getMonthlyDotsMap`), preventing heavy iterative calculations during calendar frame rendering.",
+    "Local Notifications Implementation: Utilized `flutter_local_notifications` paired with the `timezone` package to accurately schedule and cancel repeating local alarms independent of network connectivity.",
+    "Scalable UI System: Integrated `flutter_screenutil` to mathematically adapt typography, padding, and components, ensuring the design remains sharp and proportional on any device.",
+    "Centralized State & Persistence: Leveraged a singleton `HabitManager` with `ChangeNotifier` to broadcast state mutations globally, automatically persisting clean JSON-encoded data via `SharedPreferences`."
+  ],
+  "keyFeatures": [
+    "Custom Interactive Calendar",
+    "Timezone-Aware Daily Reminders",
+    "Dynamic Light/Dark Theming",
+    "Weekly Progress Bar Charts (FL Chart)",
+    "Drag-and-Drop Reorderable Dashboard",
+    "Automated Streak Tracking"
+  ]
+}
 ];
